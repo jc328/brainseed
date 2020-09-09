@@ -1,0 +1,15 @@
+.landingheader_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgb(83, 83, 83);
+  height: 60px;
+  opacity: .8;
+  width: 100%;
+  position: fixed;
+  color: white;
+}
+
+.landing_logo {
+  height: 110px;
+}

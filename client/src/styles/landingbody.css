@@ -1,0 +1,17 @@
+.landingbody_container {
+  background-color: black;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landingbody_title {
+  color: white;
+  font-size: 40px;
+  width: 300px;
+}
+
+.landing_particles {
+  width: 300px;
+}
