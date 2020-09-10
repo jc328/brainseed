@@ -10,13 +10,9 @@ function LoginModal() {
   const history = useHistory();
 
   const onSubmit = () => {
-    console.log('test')
     setVisible(false)
     history.push('/dashboard')
   }
-
-
-
 
     return (
         <>

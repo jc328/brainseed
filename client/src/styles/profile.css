@@ -4,6 +4,7 @@
   /* align-items: center; */
   justify-content: center;
   width: 200px;
+  height: 200px;
   background-color: lightblue;
   border: solid 1px rgb(187, 187, 187);
 }
@@ -15,7 +16,15 @@
   border-radius: 40px;
 }
 
-.profile_image_name {
+
+.profile_account_info {
+  display: flex;
+  flex-direction: column;
   display: flex;
   align-items: center;
+}
+
+.profile_data {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 325;
 }
