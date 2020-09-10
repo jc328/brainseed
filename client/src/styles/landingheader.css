@@ -8,6 +8,8 @@
   width: 100%;
   position: fixed;
   color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 325;
 }
 
 .landing_logo {

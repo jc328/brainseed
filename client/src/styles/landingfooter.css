@@ -1,0 +1,9 @@
+.landingfooter_container {
+  display: flex;
+  background-color: black;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50px;
+  color: white;
+
+}

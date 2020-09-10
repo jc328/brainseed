@@ -8,10 +8,21 @@
 
 .landingbody_title {
   color: white;
-  font-size: 40px;
-  width: 300px;
+  text-align: center;
+  font-size: 35px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 325;
+  /* width: 300px; */
+  width: 40%;
+  margin-left: 100px;
 }
 
 .landing_particles {
-  width: 300px;
+
+  /* height: 100%; */
+  width: 60%;
+  /* width: 400px; */
+  /* height: 400px; */
+  /* position: absolute; */
+  /* right: 100px; */
 }
