@@ -18,7 +18,7 @@ function LandingBody() {
                       "enable": false
                   },
                   "number": {
-                      "value": 200,
+                      "value": 50,
                       "density": {
                           "enable": false
                       }

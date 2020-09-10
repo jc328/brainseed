@@ -2,10 +2,19 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import '../styles/loginmodal.css'
 import { Modal, Button } from 'antd';
+import {useHistory} from 'react-router-dom'
 
 
 function LoginModal() {
   const [visible, setVisible] = useState(false)
+  const history = useHistory();
+
+  const onSubmit = () => {
+    console.log('test')
+    setVisible(false)
+    history.push('/dashboard')
+  }
+
 
 
 
@@ -19,12 +28,27 @@ function LoginModal() {
             title="Login"
             centered
             visible={visible}
-            onOk={() => setVisible(false)}
+            onOk={onSubmit}
             onCancel={() => setVisible(false)}
+            className="loginmodal"
+            style={{borderRadius:10}}
+            width={300}
+            bodyStyle={{
+              height:300,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-evenly'
+
+
+             }}
+            wrapClassName="loginmodal_wrapper"
           >
-            <p>some contents...</p>
-            <p>some contents...</p>
-            <p>some contents...</p>
+            <Button>Continue with Google</Button>
+            <Button>Continue with Facebook</Button>
+            <p>-----or----- </p>
+            <p>Email</p>
+            <p>Password</p>
           </Modal>
 
             </div>
