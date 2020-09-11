@@ -43,13 +43,11 @@ def sign_in():
 
       email = request.json.get('email', None)
       password = request.json.get('password', None)
-      print(email)
-      print(password)
 
       user= User.query.filter(User.email==email).one()
-      print(user)
-      # if (user.check_password(password)):
-      if (True):
+
+      if (user.check_password(password)):
+      # if (True):
         access_token = create_access_token(identity=email)
         return {"token": access_token, "user": user.to_dict()}, 200
       else:
