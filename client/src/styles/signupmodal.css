@@ -1,0 +1,23 @@
+.signupmodal {
+  border-radius: 10px;
+  /* background-color: green; */
+}
+
+.signupmodal_button {
+  color: Orange;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 325;
+}
+
+.signupmodal_wrapper {
+
+  /* background-color: red; */
+  justify-items: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.signup_names {
+  display: flex;
+  flex-direction: row;
+}

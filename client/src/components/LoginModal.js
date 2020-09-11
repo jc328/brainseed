@@ -1,17 +1,33 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { removeAuth, signIn } from '../actions/authentication';
 import 'antd/dist/antd.css';
 import '../styles/loginmodal.css'
-import { Modal, Button } from 'antd';
 import {useHistory} from 'react-router-dom'
+import { Form, Input, Button, Modal } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 
 function LoginModal() {
   const [visible, setVisible] = useState(false)
-  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const onSubmit = () => {
-    setVisible(false)
-    history.push('/dashboard')
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  // const onSubmit = () => {
+  //   setVisible(false)
+  //   history.push('/dashboard')
+  // }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await dispatch(removeAuth())
+    const storeReady = await dispatch(signIn(email, password));
+    if (storeReady) {
+      history.push('/dashboard')
+    }
   }
 
     return (
@@ -24,7 +40,7 @@ function LoginModal() {
             title="Login"
             centered
             visible={visible}
-            onOk={onSubmit}
+            onOk={handleSubmit}
             onCancel={() => setVisible(false)}
             className="loginmodal"
             style={{borderRadius:10}}
@@ -35,16 +51,29 @@ function LoginModal() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'space-evenly'
-
-
              }}
             wrapClassName="loginmodal_wrapper"
           >
             <Button>Continue with Google</Button>
-            <Button>Continue with Facebook</Button>
-            <p>-----or----- </p>
-            <p>Email</p>
-            <p>Password</p>
+
+            <Form.Item
+              name="Email"
+              rules={[{ required: true, message: 'Input your Email' }]}
+              ><Input
+              placeholder="*Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              /></Form.Item>
+              <Form.Item
+              name="Password"
+              rules={[{ required: true, message: 'Input your Password' }]}
+              ><Input.Password
+                placeholder="*Password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+              />
+          </Form.Item>
           </Modal>
 
             </div>

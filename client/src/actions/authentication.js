@@ -1,7 +1,7 @@
 import { baseUrl } from '../config';
 
 
-const TOKEN_KEY = 'zenmo/authentication/token';
+const TOKEN_KEY = 'brainseed/authentication/token';
 const CURRENT_USER = 'CURRENT_USER';
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_USER = 'SET_USER';

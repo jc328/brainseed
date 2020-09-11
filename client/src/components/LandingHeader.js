@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css'
 import '../styles/landingheader.css'
 import LoginModal from './LoginModal';
+import SignUpModal from './SignUpModal';
 
 function LandingHeader() {
     return (
@@ -12,9 +13,8 @@ function LandingHeader() {
             <Link to="/"><img className="landing_logo" src={process.env.PUBLIC_URL + '/landinglogo.png'} alt="" /></Link>
             <div>Find Flashcards</div>
             <div>About</div>
-            <LoginModal />
-            <div>Get Started</div>
-
+            <div><LoginModal /></div>
+            <div><SignUpModal /></div>
           </div>
         </>
     );

@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 
 db = SQLAlchemy()
@@ -19,11 +20,12 @@ class User(db.Model):
   def to_dict(self):
     return {
       "id": self.id,
-      "username": self.username,
       "first_name": self.first_name,
       "last_name": self.last_name,
       "full_name": (self.first_name + ' ' + self.last_name),
       "email": self.email,
       "picUrl": self.picUrl,
-      "balance": float(self.balance),
     }
+
+    def check_password(self, password):
+      return check_password_hash(self.password, password)
