@@ -10,7 +10,7 @@ function LandingHeader() {
     return (
         <>
           <div className="landingheader_container">
-            <Link to="/"><img className="landing_logo" src={process.env.PUBLIC_URL + '/landinglogo.png'} alt="" /></Link>
+            <Link to="/"><img className="landing_logo" src={process.env.PUBLIC_URL + '/logoword.png'} alt="" /></Link>
             <div>Find Flashcards</div>
             <div>About</div>
             <div><LoginModal /></div>

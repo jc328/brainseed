@@ -18,7 +18,6 @@ function SignUpModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, email, password)
     await dispatch(removeAuth())
     const storeReady = await dispatch(signUp(firstName, lastName, email, password));
     if (storeReady) {
@@ -61,6 +60,7 @@ function SignUpModal() {
           ><Input
             placeholder="*First Name"
             value={firstName}
+            onPressEnter={handleSubmit}
             onChange={e => setFirstName(e.target.value)}
             />
             </Form.Item>
@@ -70,6 +70,7 @@ function SignUpModal() {
           ><Input
           placeholder="*Last Name"
           value={lastName}
+          onPressEnter={handleSubmit}
           onChange={e => setLastName(e.target.value)}
           /></Form.Item>
           </div>
@@ -79,6 +80,7 @@ function SignUpModal() {
           ><Input
           placeholder="*Email"
           value={email}
+          onPressEnter={handleSubmit}
           onChange={e => setEmail(e.target.value)}
           /></Form.Item>
           <Form.Item
@@ -87,6 +89,7 @@ function SignUpModal() {
           ><Input.Password
             placeholder="*Password"
             value={password}
+            onPressEnter={handleSubmit}
             onChange={e => setPassword(e.target.value)}
             iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
             />

@@ -45,6 +45,7 @@ function LoginModal() {
             className="loginmodal"
             style={{borderRadius:10}}
             width={300}
+            okText="Login"
             bodyStyle={{
               height:300,
               display: 'flex',
@@ -62,6 +63,7 @@ function LoginModal() {
               ><Input
               placeholder="*Email"
               value={email}
+              onPressEnter={handleSubmit}
               onChange={e => setEmail(e.target.value)}
               /></Form.Item>
               <Form.Item
@@ -70,6 +72,7 @@ function LoginModal() {
               ><Input.Password
                 placeholder="*Password"
                 value={password}
+                onPressEnter={handleSubmit}
                 onChange={e => setPassword(e.target.value)}
                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
               />
