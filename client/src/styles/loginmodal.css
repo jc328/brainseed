@@ -12,9 +12,12 @@
 }
 
 .loginmodal_wrapper {
-
-  /* background-color: red; */
+  /* background-color: lightgrey; */
+  /* opacity: .5;  */
+  /* filter: blur(10px); */
+  /* -webkit-filter: blur(2px); */
   justify-items: center;
   align-items: center;
   border-radius: 10px;
+  /* z-index: 1; */
 }

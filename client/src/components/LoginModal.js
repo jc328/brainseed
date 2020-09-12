@@ -6,6 +6,7 @@ import '../styles/loginmodal.css'
 import {useHistory} from 'react-router-dom'
 import { Form, Input, Button, Modal } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import DemoButton from './DemoButton.js'
 
 
 function LoginModal() {
@@ -16,10 +17,9 @@ function LoginModal() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // const onSubmit = () => {
-  //   setVisible(false)
-  //   history.push('/dashboard')
-  // }
+  // useEffect(() => {
+  //   console.log(email, password)
+  // }, [email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,40 +43,50 @@ function LoginModal() {
             onOk={handleSubmit}
             onCancel={() => setVisible(false)}
             className="loginmodal"
-            style={{borderRadius:10}}
             width={300}
             okText="Login"
+            // maskStyle={{filter: "blur(2px)"}}
+            // style={{borderRadius: 5}}
             bodyStyle={{
               height:300,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'space-evenly'
+              justifyContent: 'space-evenly',
              }}
             wrapClassName="loginmodal_wrapper"
           >
             <Button>Continue with Google</Button>
+            <DemoButton email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
 
+          <Form>
             <Form.Item
               name="Email"
               rules={[{ required: true, message: 'Input your Email' }]}
-              ><Input
-              placeholder="*Email"
-              value={email}
-              onPressEnter={handleSubmit}
-              onChange={e => setEmail(e.target.value)}
-              /></Form.Item>
+              >
+                <Input
+                  placeholder="*Email"
+                  value={email}
+                  onPressEnter={handleSubmit}
+                  onChange={e => setEmail(e.target.value)}
+                />
+              </Form.Item>
+              {email}
+              {password}
+
               <Form.Item
               name="Password"
               rules={[{ required: true, message: 'Input your Password' }]}
-              ><Input.Password
+              >
+                <Input.Password
                 placeholder="*Password"
                 value={password}
                 onPressEnter={handleSubmit}
                 onChange={e => setPassword(e.target.value)}
                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-              />
-          </Form.Item>
+                />
+              </Form.Item>
+            </Form>
           </Modal>
 
             </div>
