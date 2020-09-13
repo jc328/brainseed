@@ -4,17 +4,32 @@ import '../styles/dashboard.css'
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { ReadOutlined, LaptopOutlined, FireOutlined } from '@ant-design/icons';
 import Profile from './Profile';
+import { useSelector } from 'react-redux'
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
 
 function DashBoard() {
+  const username = useSelector((state) => state.authentication.user.username)
+  const picture = useSelector((state) => state.authentication.user.picUrl)
+  const firstName = useSelector((state) => state.authentication.user.first_name)
+  const lastName = useSelector((state) => state.authentication.user.last_name)
+  const createdDate = useSelector((state) => state.authentication.user.created_at)
+
+
+
   return (
     <Layout>
       {/* <Header /> */}
     <Layout className="dashboard_container">
       <Sider width={200} className="dashboard_sidebar">
-        <Profile />
+      <div><Profile
+            username={username}
+            picture={picture}
+            firstName={firstName}
+            lastName={lastName}
+            createdDate={createdDate}
+            /></div>
         <Menu
           mode="inline"
           defaultSelectedKeys={['1']}
