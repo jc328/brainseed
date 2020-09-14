@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { removeAuth, signIn } from '../actions/authentication';
 import 'antd/dist/antd.css';
 import '../styles/loginmodal.css'
 import {useHistory} from 'react-router-dom'
-import { Form, Input, Button, Modal } from 'antd';
+import { Form, Input, Button, Modal, Alert, Divider } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import DemoButton from './DemoButton.js'
+import GoogleSignIn from './GoogleSignIn'
 
 
 function LoginModal() {
@@ -14,12 +15,10 @@ function LoginModal() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const valErrors = useSelector(state=> state.authentication.valErrors)
+
   const history = useHistory();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   console.log(email, password)
-  // }, [email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,12 +29,18 @@ function LoginModal() {
     }
   }
 
+  const clearInfo = () => {
+    setEmail('')
+    setPassword('')
+  }
+
     return (
         <>
           <div className="loginmodal_container">
             <Button className="loginmodal_login" type="text" onClick={() => setVisible(true)}>
               Login
             </Button>
+
             <Modal
             title="Login"
             centered
@@ -45,8 +50,6 @@ function LoginModal() {
             className="loginmodal"
             width={300}
             okText="Login"
-            // maskStyle={{filter: "blur(2px)"}}
-            // style={{borderRadius: 5}}
             bodyStyle={{
               height:300,
               display: 'flex',
@@ -56,9 +59,16 @@ function LoginModal() {
              }}
             wrapClassName="loginmodal_wrapper"
           >
-            <Button>Continue with Google</Button>
+            {valErrors? <Alert
+              message={valErrors.msg}
+              type="warning"
+              showIcon
+              closable
+              onClose= {clearInfo}
+            /> : null}
+            <GoogleSignIn />
             <DemoButton email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
-
+            <Divider style={{fontSize: '10px', fontWeight: 350}}>or</Divider>
           <Form>
             <Form.Item
               name="Email"
@@ -71,9 +81,6 @@ function LoginModal() {
                   onChange={e => setEmail(e.target.value)}
                 />
               </Form.Item>
-              {email}
-              {password}
-
               <Form.Item
               name="Password"
               rules={[{ required: true, message: 'Input your Password' }]}
@@ -87,6 +94,7 @@ function LoginModal() {
                 />
               </Form.Item>
             </Form>
+
           </Modal>
 
             </div>

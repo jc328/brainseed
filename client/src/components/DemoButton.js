@@ -24,9 +24,9 @@ export default function DemoButton () {
 
   return (
     <Button
-    style={{backgroundColor:"#3D95CE", color:"white"}}
+    style={{backgroundColor:"#3367D6", color:"white", width: 156}}
     onClick={handleSubmit}
-    >Demo User</Button>
+    >Sign in as Demo User</Button>
     )
   }
 

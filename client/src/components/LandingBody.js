@@ -3,6 +3,7 @@ import 'antd/dist/antd.css'
 import Particles from 'react-particles-js';
 import '../styles/landingbody.css';
 
+
 function LandingBody() {
     return (
         <>
