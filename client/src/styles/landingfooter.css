@@ -2,8 +2,12 @@
   display: flex;
   background-color: black;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 50px;
   color: white;
+}
 
+.landingfooter_name {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 325;
 }
