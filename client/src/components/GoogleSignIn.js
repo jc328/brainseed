@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { Button } from 'antd';
 import * as AuthActions from '../actions/authentication';
 import '../styles/googlesignin.css'
 
@@ -41,7 +42,7 @@ function GoogleSignIn() {
 
   return (
         <>
-          <img className="signin_button" onClick={handleSubmit} src={process.env.PUBLIC_URL + '/googlebutton.png'} alt="" />
+          <Button type="link" style={{marginBottom: 20}}><img className="signin_button" onClick={handleSubmit} src={process.env.PUBLIC_URL + '/googlebutton.png'} alt="" /></Button>
         </>
     );
 }

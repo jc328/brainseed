@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { signUp, signIn } from '../actions/authentication'
+import { Button } from 'antd';
 
 function GoogleSignUp() {
 
@@ -49,7 +50,7 @@ function GoogleSignUp() {
 
   return (
         <>
-          <img className="signin_button" onClick={handleSubmit} src={process.env.PUBLIC_URL + '/googlebutton.png'} alt="" />
+          <Button type="link" style={{marginBottom: 20}}><img className="signin_button" onClick={handleSubmit} src={process.env.PUBLIC_URL + '/googlebutton.png'} alt="" /></Button>
         </>
     );
 }
