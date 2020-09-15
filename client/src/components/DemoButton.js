@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import { useDispatch } from 'react-redux'
 import { removeAuth, signIn } from '../actions/authentication';
 import {useHistory} from 'react-router-dom'
+import { UserOutlined } from '@ant-design/icons';
 
 export default function DemoButton () {
   const history = useHistory();
@@ -24,9 +25,10 @@ export default function DemoButton () {
 
   return (
     <Button
-    style={{backgroundColor:"#3367D6", color:"white", width: 156}}
+    style={{backgroundColor:"#3367D6", color:"white", width: 156, fontSize: 12, alignItems: "center"}}
     onClick={handleSubmit}
-    >Sign in as Demo User</Button>
+    icon={<UserOutlined />}
+    >Demo User</Button>
     )
   }
 

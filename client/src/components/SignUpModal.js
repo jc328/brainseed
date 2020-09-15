@@ -5,6 +5,7 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { removeAuth, signUp } from '../actions/authentication';
 import {useHistory} from 'react-router-dom'
 import '../styles/signupmodal.css'
+import GoogleSignUp from './GoogleSignUp';
 
 function SignUpModal() {
 
@@ -28,6 +29,7 @@ function SignUpModal() {
   return (
     <>
       <div className="signupmodal_container"></div>
+
         <Button className="signupmodal_button" type="text" onClick={() => setVisible(true)}>
           Get Started
         </Button>
@@ -49,7 +51,7 @@ function SignUpModal() {
           }}
         wrapClassName="signupmodal_wrapper"
       >
-        <Button>Sign Up with Google</Button>
+        <GoogleSignUp />
         {/* <Button>Sign Up with Facebook</Button> */}
         <Form onSubmit={handleSubmit}>
           <div className="signup_names">

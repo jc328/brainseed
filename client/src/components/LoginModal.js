@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { removeAuth, signIn } from '../actions/authentication';
 import 'antd/dist/antd.css';
 import '../styles/loginmodal.css'
 import {useHistory} from 'react-router-dom'
-import { Form, Input, Button, Modal, Alert, Divider, message } from 'antd';
+import { Form, Input, Button, Modal, Divider } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import DemoButton from './DemoButton.js'
 import GoogleSignIn from './GoogleSignIn'
@@ -14,8 +14,6 @@ function LoginModal() {
   const [visible, setVisible] = useState(false)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const valErrors = useSelector(state=> state.authentication.valErrors)
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -29,16 +27,9 @@ function LoginModal() {
     }
   }
 
-
-  const clearInfo = () => {
-    setEmail('')
-    setPassword('')
-  }
-
-    return (
+  return (
         <>
           <div className="loginmodal_container">
-          {valErrors ? message.error(valErrors.msg): null}
             <Button className="loginmodal_login" type="text" onClick={() => setVisible(true)}>
               Login
             </Button>
@@ -65,13 +56,6 @@ function LoginModal() {
             <DemoButton email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
             <Divider style={{fontSize: '10px', fontWeight: 350}}>or</Divider>
           <Form>
-          {/* {valErrors? <Alert
-              message={valErrors.msg}
-              type="warning"
-              showIcon
-              closable
-              onClose= {clearInfo}
-            /> : null} */}
             <Form.Item
               name="Email"
               rules={[{ required: true, message: 'Input your Email' }]}
