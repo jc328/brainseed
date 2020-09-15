@@ -59,17 +59,17 @@ function LoginModal() {
              }}
             wrapClassName="loginmodal_wrapper"
           >
-            {valErrors? <Alert
+            <GoogleSignIn />
+            <DemoButton email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
+            <Divider style={{fontSize: '10px', fontWeight: 350}}>or</Divider>
+          <Form>
+          {valErrors? <Alert
               message={valErrors.msg}
               type="warning"
               showIcon
               closable
               onClose= {clearInfo}
             /> : null}
-            <GoogleSignIn />
-            <DemoButton email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
-            <Divider style={{fontSize: '10px', fontWeight: 350}}>or</Divider>
-          <Form>
             <Form.Item
               name="Email"
               rules={[{ required: true, message: 'Input your Email' }]}
