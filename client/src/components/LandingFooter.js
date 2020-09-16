@@ -13,7 +13,7 @@ function LandingFooter() {
                     <Button type="link" href="https://www.linkedin.com/in/john-chen-92714817/"><img
                     src={process.env.PUBLIC_URL + '/linkedin.png'}
                     alt=""
-                    style={{height:20, marginRight: 20, marginLeft: 20}}
+                    style={{height:20, marginRight: 20, marginLeft: 30}}
                      /></Button>
                 </div>
             <div>

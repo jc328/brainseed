@@ -5,15 +5,17 @@
   justify-content: center;
   width: 200px;
   height: 200px;
-  background-color: lightblue;
-  border: solid 1px rgb(187, 187, 187);
+  background-color: rgb(73, 98, 107);
+  /* border: solid 1px rgb(187, 187, 187); */
 }
 
 .profile_image {
   margin: 10px;
   width: 60px;
   height: 60px;
-  border-radius: 40px;
+  border-radius: 20px;
+  margin:5px;
+  border: 2px solid white;
 }
 
 
@@ -27,4 +29,9 @@
 .profile_data {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 325;
+  color: white;
+}
+
+.profile_username {
+  color: white;
 }

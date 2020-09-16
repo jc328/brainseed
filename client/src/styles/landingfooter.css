@@ -1,6 +1,6 @@
 .landingfooter_container {
   display: flex;
-  background-color: black;
+  background-color: rgb(24, 20, 20);
   align-items: center;
   justify-content: center;
   height: 50px;

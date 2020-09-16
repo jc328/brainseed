@@ -30,22 +30,23 @@ function GoogleSignUp() {
       const storeReady = dispatch(signUp(auth.currentUser.le.rt.tV, auth.currentUser.le.rt.uT, auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT, auth.currentUser.le.rt.TJ))
 
         storeReady.then((result) => {
-          // if (result===true) {
-            if (true) {
+
+          if (result===true) {
             const storeReady = dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT));
               if (storeReady) {
                 history.push('/dashboard')
             }
+          } else if (result===false) {
+            dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT)).then((res) => {
+              if (res) {
+                history.push('/dashboard')
+            }
+      })
           }
         })
       })
     }
-   catch {
-    const storeReady = dispatch(signUp('CauseError', 'CauseError', 'CauseError', 'CauseError', 'CauseError'))
-      if (storeReady) {
-        history.push('/signup/')
-      }
-    }
+   catch {}
   }
 
   return (

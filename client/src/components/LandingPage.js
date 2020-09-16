@@ -14,7 +14,7 @@ function LandingPage() {
 
 
   useEffect(() => {
-    return valErrors ? message.error(valErrors.msg): undefined
+    return valErrors ? message.warning(valErrors.msg): undefined
   })
 
 
