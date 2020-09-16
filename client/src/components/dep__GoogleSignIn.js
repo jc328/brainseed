@@ -30,7 +30,10 @@ function GoogleSignIn() {
     try {
       const storeReady = await dispatch(AuthActions.signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT));
       if (storeReady) {
-        history.push('/dashboard')
+        history.push({
+          pathname: '/dashboard',
+          state: {'google': 'previousAccount'}
+        })
       }
     } catch {
       const storeReady = await dispatch(AuthActions.signIn('causeError', 'C4useError' ));

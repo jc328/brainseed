@@ -11,13 +11,15 @@ import { useSelector } from 'react-redux'
 function LandingPage() {
   const valErrors = useSelector(state=> state.authentication.valErrors)
 
-
-
   useEffect(() => {
-    return valErrors ? message.warning(valErrors.msg): undefined
+    if (valErrors) {
+      if (valErrors.msg.search('Google') === 7) {
+        return
+      } else {
+        message.warning(valErrors.msg)
+      }
+    }
   })
-
-
 
   return (
   <>

@@ -19,7 +19,10 @@ export default function DemoButton () {
     await dispatch(removeAuth())
     const storeReady = await dispatch(signIn(email, password));
     if (storeReady) {
-      history.push('/dashboard')
+      history.push({
+        pathname: '/dashboard',
+        state: {'google': 'demologin'}
+      })
     }
   }
 

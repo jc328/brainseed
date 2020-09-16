@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'antd/dist/antd.css';
 import '../styles/dashboard.css'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, message } from 'antd';
 import { ReadOutlined, LaptopOutlined, FireOutlined } from '@ant-design/icons';
 import Profile from './Profile';
 import { useSelector } from 'react-redux'
@@ -9,12 +9,26 @@ import { useSelector } from 'react-redux'
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
 
-function DashBoard() {
+function DashBoard({location}) {
   const username = useSelector((state) => state.authentication.user.username)
   const picture = useSelector((state) => state.authentication.user.picUrl)
   const firstName = useSelector((state) => state.authentication.user.first_name)
   const lastName = useSelector((state) => state.authentication.user.last_name)
   const createdDate = useSelector((state) => state.authentication.user.created_at)
+
+  useEffect(() => {
+    if (location.state) {
+      if (location.state.google === "newAccount") {
+        message.loading('Creating new Google Account.  Logging In...', [2], () => {message.success('Logged In')})
+      } else if (location.state.google === "standard") {
+        message.loading('Logging In...', [2], () => {message.success('Logged In')})
+      } else if (location.state.google === "demologin") {
+        message.loading('Demo Account Logging In...', [2], () => {message.success('Logged In')})
+      } else if (location.state.google === "newstandard") {
+        message.loading('New Account Created.  Logging In...', [2], () => {message.success('Logged In')})
+      }
+    }
+  })
 
 
 

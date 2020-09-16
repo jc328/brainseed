@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { signUp, signIn } from '../actions/authentication'
+import { signUp, signIn, setValErrors } from '../actions/authentication'
 import { Button } from 'antd';
+import '../styles/googlesignin.css'
 
 function GoogleSignUp() {
 
@@ -26,20 +27,26 @@ function GoogleSignUp() {
     const handleSubmit = (e) => {
     e.preventDefault();
     try {
+      dispatch(setValErrors(''));
       auth.signIn().then(() => {
       const storeReady = dispatch(signUp(auth.currentUser.le.rt.tV, auth.currentUser.le.rt.uT, auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT, auth.currentUser.le.rt.TJ))
 
         storeReady.then((result) => {
-
           if (result===true) {
             const storeReady = dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT));
               if (storeReady) {
-                history.push('/dashboard')
+                history.push({
+                  pathname: '/dashboard',
+                  state: {'google': 'newAccount'}
+                })
             }
           } else if (result===false) {
             dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT)).then((res) => {
               if (res) {
-                history.push('/dashboard')
+                history.push({
+                  pathname: '/dashboard',
+                  state: {'google': 'previousAccount'}
+                })
             }
       })
           }

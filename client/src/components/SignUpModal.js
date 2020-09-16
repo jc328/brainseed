@@ -22,7 +22,10 @@ function SignUpModal() {
     await dispatch(removeAuth())
     const storeReady = await dispatch(signUp(firstName, lastName, email, password));
     if (storeReady) {
-      history.push('/dashboard')
+      history.push({
+        pathname: '/dashboard',
+        state: {'google': 'newstandard'}
+      })
     }
   }
 

@@ -7,7 +7,9 @@ import {useHistory} from 'react-router-dom'
 import { Form, Input, Button, Modal, Divider } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import DemoButton from './DemoButton.js'
-import GoogleSignIn from './GoogleSignIn'
+// import GoogleSignIn from './GoogleSignIn';
+import GoogleSignUp from './GoogleSignUp';
+
 
 
 function LoginModal() {
@@ -23,7 +25,10 @@ function LoginModal() {
     await dispatch(removeAuth())
     const storeReady = await dispatch(signIn(email, password));
     if (storeReady) {
-      history.push('/dashboard')
+      history.push({
+        pathname: '/dashboard',
+        state: {'google': 'standard'}
+      })
     }
   }
 
@@ -52,7 +57,7 @@ function LoginModal() {
              }}
             wrapClassName="loginmodal_wrapper"
           >
-            <GoogleSignIn />
+            <GoogleSignUp />
             <DemoButton email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
             <Divider style={{fontSize: '10px', fontWeight: 350}}>or</Divider>
           <Form>
