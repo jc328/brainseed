@@ -47,7 +47,6 @@ def sign_in():
       user= User.query.filter(User.email==email).one()
 
       if (user.check_password(password)):
-      # if (True):
         access_token = create_access_token(identity=email)
         return {"token": access_token, "user": user.to_dict()}, 200
       else:
