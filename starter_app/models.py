@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy.orm import validates
+from sqlalchemy.orm import validates, relationship
 import datetime
 import re
 
@@ -19,7 +19,7 @@ class User(db.Model):
   created_at = db.Column(db.DateTime, default=datetime.datetime.now)
   updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
 
-  decks = db.relationship("Deck", back_populates="user", cascade="all, delete-orphan")
+  decks = db.relationship("Deck", back_populates="user")
 
   def to_dict(self):
     return {
@@ -72,6 +72,7 @@ class Deck(db.Model):
   updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
 
   user = db.relationship("User", back_populates="decks")
+  card = db.relationship("Card", back_populates="decks")
 
   def to_dict(self):
     return {
@@ -97,7 +98,7 @@ class Card(db.Model):
   created_at = db.Column(db.DateTime, default=datetime.datetime.now)
   updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
 
-  deck = db.relationship("Deck", back_populates="cards")
+  decks = db.relationship("Deck", back_populates="card")
 
 
   def to_dict(self):
