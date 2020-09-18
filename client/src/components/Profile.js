@@ -6,13 +6,12 @@ import { message } from 'antd';
 
 function Profile({firstName, lastName, picture, createdDate}) {
   const pictureURL = picture ? picture : process.env.PUBLIC_URL + 'avatar_generic.png'
-
   const valErrors = useSelector(state=> state.authentication.valErrors)
 
   useEffect(() => {
     if (valErrors) {
       if (valErrors.msg.search('Google') === 7) {
-        message.loading('Google Account Found.  Logging In.', [2], () => {message.success('Logged In')})
+        message.loading('Google Account Found.  Logging In.', [2], () => {message.success(`Logged In.  Welcome ${firstName}`)})
       }
     }
   })
