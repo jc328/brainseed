@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 load_dotenv()
 
 from starter_app import app, db
-from starter_app.models import User, Deck, Card
+from starter_app.models import User, Deck, Card, UserDeck
 
 with app.app_context():
   db.drop_all()
@@ -23,12 +23,39 @@ with app.app_context():
 
 
   d_list = [
-    Deck(deck = "Spanish", user_id = 1, deck_photo = "http://", created_at = datetime.now(), updated_at = datetime.now())
+    Deck(deck = "Spanish", deck_photo = "http://", created_at = datetime.now(), updated_at = datetime.now()),
+    Deck(deck = "Python", deck_photo = "http://", created_at = datetime.now(), updated_at = datetime.now()),
+    Deck(deck = "Cooking", deck_photo = "http://", created_at = datetime.now(), updated_at = datetime.now()),
+    Deck(deck = "Cooking", deck_photo = "http://", created_at = datetime.now(), updated_at = datetime.now()),
+    Deck(deck = "Python",  deck_photo = "http://", created_at = datetime.now(), updated_at = datetime.now()),
+    Deck(deck = "Spanish", deck_photo = "http://", created_at = datetime.now(), updated_at = datetime.now())
   ]
 
   for d in d_list:
     db.session.add(d)
   db.session.commit()
+
+
+
+  userD_list = [
+    UserDeck(user_id = 1, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 2, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 3, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now())
+    # UserDeck(user_id = 2, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
+    # UserDeck(user_id = 2, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
+    # UserDeck(user_id = 2, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now()),
+    # UserDeck(user_id = 3, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now()),
+    # UserDeck(user_id = 3, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
+    # UserDeck(user_id = 3, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
+    # UserDeck(user_id = 4, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
+    # UserDeck(user_id = 4, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
+    # UserDeck(user_id = 4, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now())
+  ]
+
+  for user in userD_list:
+    db.session.add(user)
+  db.session.commit()
+
 
 
   c_list = [

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, redirect, url_for
 from starter_app.models import User
 from werkzeug.security import generate_password_hash
-from ..models import User, db
+from ..models import User, Deck, Card, db
 from flask_jwt_extended import jwt_optional, create_access_token, get_jwt_identity, jwt_required, get_raw_jwt
 
 user_routes = Blueprint('users', __name__)
@@ -53,3 +53,25 @@ def sign_in():
         return jsonify({"msg": "Bad email or password"}), 400
     except:
       return jsonify({"msg": "Bad email or password"}), 400
+
+
+@user_routes.route('/deck/cards', methods=['POST'])
+def spanish():
+  user_id = request.get_json()
+
+  deckData = Deck.query.filter(Deck.user_id==user_id).all()
+  ids = [deck.id for deck in deckData if deck.deck=="Spanish"]
+
+  # result = [print(r) for r in deckData]
+  print('************', deckData)
+  print('************', ids)
+  # cardData = Card.query.filter(Card.deck_id==deckData.id)
+
+
+  return {
+    "decks": [deck.to_dict() for deck in deckData],
+    # "cards": [card.to_dict() for card in cardData]
+  }
+
+  # response = User.query.all()
+  # return { "users": [user.to_dict() for user in response]}

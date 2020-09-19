@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy.orm import validates, relationship
+from sqlalchemy.orm import validates
 import datetime
 import re
 
@@ -19,7 +19,7 @@ class User(db.Model):
   created_at = db.Column(db.DateTime, default=datetime.datetime.now)
   updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
 
-  decks = db.relationship("Deck", back_populates="user")
+  userdecks = db.relationship("UserDeck", back_populates="user")
 
   def to_dict(self):
     return {
@@ -60,25 +60,45 @@ class User(db.Model):
 
     return email
 
+class UserDeck(db.Model):
+  __tablename__='userdecks'
+
+  id = db.Column(db.Integer, primary_key = True)
+  user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+  deck_id = db.Column(db.Integer, db.ForeignKey('decks.id'))
+  created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+  updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+
+  user = db.relationship("User", back_populates="userdecks")
+  decks = db.relationship("Deck", back_populates="userdecks")
+# userdecks = db.relationship("UserDeck", back_populates="user")
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "user_id": self.user_id,
+      "deck_id": self.deck_id,
+      "created_at": self.created_at,
+      "updated_at": self.updated_at,
+    }
 
 class Deck(db.Model):
   __tablename__='decks'
 
   id = db.Column(db.Integer, primary_key = True)
   deck = db.Column(db.String(300))
-  user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+  # card_id = db.Column(db.Integer, db.ForeignKey('cards.id'))
   deck_photo = db.Column(db.String(300))
   created_at = db.Column(db.DateTime, default=datetime.datetime.now)
   updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
 
-  user = db.relationship("User", back_populates="decks")
+  userdecks = db.relationship("UserDeck", back_populates="decks")
   card = db.relationship("Card", back_populates="decks")
 
   def to_dict(self):
     return {
       "id": self.id,
       "deck": self.deck,
-      "user_id": self.user_id,
       "deck_photo": self.deck_photo,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
@@ -94,12 +114,11 @@ class Card(db.Model):
   card_photo = db.Column(db.String(300))
   card_audio = db.Column(db.String(300))
   card_url = db.Column(db.String(300))
-  deck_id = db.Column(db.Integer, db.ForeignKey("decks.id"))
+  deck_id = db.Column(db.Integer, db.ForeignKey('decks.id'))
   created_at = db.Column(db.DateTime, default=datetime.datetime.now)
   updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.now)
 
   decks = db.relationship("Deck", back_populates="card")
-
 
   def to_dict(self):
     return {
