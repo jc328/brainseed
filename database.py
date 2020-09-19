@@ -39,17 +39,17 @@ with app.app_context():
 
   userD_list = [
     UserDeck(user_id = 1, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 1, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 1, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 2, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
     UserDeck(user_id = 2, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
-    UserDeck(user_id = 3, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now())
-    # UserDeck(user_id = 2, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
-    # UserDeck(user_id = 2, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
-    # UserDeck(user_id = 2, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now()),
-    # UserDeck(user_id = 3, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now()),
-    # UserDeck(user_id = 3, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
-    # UserDeck(user_id = 3, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
-    # UserDeck(user_id = 4, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
-    # UserDeck(user_id = 4, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
-    # UserDeck(user_id = 4, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now())
+    UserDeck(user_id = 2, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 3, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 3, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 3, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 4, deck_id = 1, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 4, deck_id = 2, created_at = datetime.now(), updated_at = datetime.now()),
+    UserDeck(user_id = 4, deck_id = 3, created_at = datetime.now(), updated_at = datetime.now())
   ]
 
   for user in userD_list:

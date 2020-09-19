@@ -129,7 +129,7 @@ class Card(db.Model):
       "card_photo": self.card_photo,
       "card_audio": self.card_audio,
       "card_url": self.card_url,
-      "deck_id": self.deck,
+      "deck_id": self.deck_id,
       "created_at": self.created_at,
       "updated_at": self.updated_at
     }

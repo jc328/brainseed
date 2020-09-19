@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, redirect, url_for
 from starter_app.models import User
 from werkzeug.security import generate_password_hash
-from ..models import User, Deck, Card, db
+from ..models import User, Deck, Card, UserDeck, db
 from flask_jwt_extended import jwt_optional, create_access_token, get_jwt_identity, jwt_required, get_raw_jwt
 
 user_routes = Blueprint('users', __name__)
@@ -59,18 +59,24 @@ def sign_in():
 def spanish():
   user_id = request.get_json()
 
-  deckData = Deck.query.filter(Deck.user_id==user_id).all()
-  ids = [deck.id for deck in deckData if deck.deck=="Spanish"]
+  userDecks = UserDeck.query.filter(UserDeck.user_id==user_id).all()
+  ids = [deck.deck_id for deck in userDecks]
 
-  # result = [print(r) for r in deckData]
-  print('************', deckData)
-  print('************', ids)
+  decks = Deck.query.filter(Deck.id.in_(ids)).all()
+
+  deckNames = [deck.deck for deck in decks]
+  deckIds = [deck.id for deck in decks]
+
+  cards = Card.query.filter(Card.deck_id.in_(deckIds)).all()
+
+  print('************', deckNames)
+  print('************', deckIds)
   # cardData = Card.query.filter(Card.deck_id==deckData.id)
 
 
   return {
-    "decks": [deck.to_dict() for deck in deckData],
-    # "cards": [card.to_dict() for card in cardData]
+    "deckData": [deck.to_dict() for deck in decks],
+    "cards": [card.to_dict() for card in cards]
   }
 
   # response = User.query.all()
