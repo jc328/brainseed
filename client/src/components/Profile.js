@@ -14,7 +14,7 @@ function Profile({firstName, lastName, picture, createdDate}) {
         message.loading('Google Account Found.  Logging In.', [2], () => {message.success(`Logged In.  Welcome ${firstName}`)})
       }
     }
-  })
+  }, [firstName, valErrors])
 
     return (
         <>

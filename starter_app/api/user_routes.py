@@ -71,8 +71,6 @@ def spanish():
 
   print('************', deckNames)
   print('************', deckIds)
-  # cardData = Card.query.filter(Card.deck_id==deckData.id)
-
 
   return {
     "deckData": [deck.to_dict() for deck in decks],

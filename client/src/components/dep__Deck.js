@@ -23,7 +23,7 @@ function Deck() {
 
     return (
         <>
-            <div>{console.log(data)}</div>
+            {/* <div>{console.log(data)}</div> */}
         </>
     );
 }

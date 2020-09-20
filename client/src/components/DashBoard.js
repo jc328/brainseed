@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { baseUrl } from '../config';
 import 'antd/dist/antd.css';
 import '../styles/dashboard.css'
 import { Layout, Menu, Breadcrumb, message } from 'antd';
-import { ReadOutlined, LaptopOutlined, FireOutlined } from '@ant-design/icons';
+import { ReadOutlined, } from '@ant-design/icons';
+// LaptopOutlined, FireOutlined
 import Profile from './Profile';
 import { useSelector } from 'react-redux'
-import Deck from './Deck';
+import FlashCard from './FlashCard';
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -16,8 +18,24 @@ function DashBoard({location}) {
   const firstName = useSelector((state) => state.authentication.user.first_name)
   const lastName = useSelector((state) => state.authentication.user.last_name)
   const createdDate = useSelector((state) => state.authentication.user.created_at)
+  const [data, setData] = useState([]);
+  const userId = useSelector((state) => state.authentication.user.id)
 
   useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userId),
+    }
+    async function test() {
+    const response = await fetch(`${baseUrl}/deck/cards`, requestOptions)
+    const newData = await response.json()
+    setData(newData)
+    }
+    test()
+  }, [userId])
+
+  function welcome () {
     if (location.state) {
       if (location.state.google === "newAccount") {
         message.loading('Creating new Google Account.  Logging In...', [2], () => {message.success(`Logged In.  Welcome ${firstName}`)})
@@ -29,11 +47,13 @@ function DashBoard({location}) {
         message.loading('New Account Created.  Logging In...', [2], () => {message.success(`Logged In.  Welcome ${firstName}`)})
       }
     }
-  })
+  }
+
+  useEffect(welcome, [])
 
   return (
     <Layout>
-      {/* <Header /> */}
+      {console.log(data)}
     <Layout className="dashboard_container">
       <Sider width={200} className="dashboard_sidebar">
       <div><Profile
@@ -49,12 +69,20 @@ function DashBoard({location}) {
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
         >
-          <SubMenu key="sub1" icon={<ReadOutlined />} title="Spanish">
-            <Menu.Item key="1"><Deck /></Menu.Item>
-            <Menu.Item key="2">Lesson 2</Menu.Item>
-            <Menu.Item key="3">Lesson 3</Menu.Item>
-            <Menu.Item key="4">Lesson 4</Menu.Item>
-          </SubMenu>
+          {data.deckData ? data.deckData.map((x, idx) => <SubMenu key={idx} icon={<ReadOutlined />} title={x.deck} >
+          {data.cards.map((c, index) =>  {
+            let i = 0
+            if (index % 20 === 0 ) {
+              i++
+              return <Menu.Item key={index}>Lesson {i}</Menu.Item>
+            }
+            return ''
+          })}
+          {/* {data.cards.map((c, index) => <Menu.Item key={index}>{c.card}</Menu.Item>)} */}
+          </SubMenu>) : ''}
+
+
+          {/*
           <SubMenu key="sub2" icon={<LaptopOutlined />} title="Cooking">
             <Menu.Item key="5">Lesson 1</Menu.Item>
             <Menu.Item key="6">Lesson 2</Menu.Item>
@@ -63,27 +91,27 @@ function DashBoard({location}) {
           </SubMenu>
           <SubMenu key="sub3" icon={<FireOutlined />} title="Python">
             <Menu.Item key="9">Coming Soon</Menu.Item>
-            {/* <Menu.Item key="10">Coming Soon</Menu.Item>
+            <Menu.Item key="10">Coming Soon</Menu.Item>
             <Menu.Item key="11">Coming Soon</Menu.Item>
-            <Menu.Item key="12">Coming Soon</Menu.Item> */}
-          </SubMenu>
+            <Menu.Item key="12">Coming Soon</Menu.Item>
+          </SubMenu> */}
         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
+          <Breadcrumb.Item>Card</Breadcrumb.Item>
         </Breadcrumb>
         <Content
           className="dashboard_sidebar"
           style={{
             padding: 24,
             margin: 0,
-            minHeight: 280,
+            minHeight: 380,
           }}
         >
-          Content
+          <FlashCard />
         </Content>
       </Layout>
     </Layout>

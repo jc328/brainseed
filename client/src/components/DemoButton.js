@@ -13,7 +13,6 @@ export default function DemoButton () {
   const password = "private"
 
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(removeAuth())
