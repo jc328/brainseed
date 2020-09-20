@@ -71,30 +71,20 @@ function DashBoard({location}) {
         >
           {data.deckData ? data.deckData.map((x, idx) => <SubMenu key={idx} icon={<ReadOutlined />} title={x.deck} >
           {data.cards.map((c, index) =>  {
-            let i = 0
-            if (index % 20 === 0 ) {
-              i++
-              return <Menu.Item key={index}>Lesson {i}</Menu.Item>
+            if (index % 50 === 0 && (idx+1) === c.deck_id) {
+              return <Menu.Item key={index}>Lesson {(index/50) + 1}</Menu.Item>
+            }
+            if (idx+1 !== c.deck_id && index < 1) {
+              return <Menu.Item key={index}>Coming Soon...</Menu.Item>
             }
             return ''
-          })}
+            }
+          )}
           {/* {data.cards.map((c, index) => <Menu.Item key={index}>{c.card}</Menu.Item>)} */}
           </SubMenu>) : ''}
 
 
-          {/*
-          <SubMenu key="sub2" icon={<LaptopOutlined />} title="Cooking">
-            <Menu.Item key="5">Lesson 1</Menu.Item>
-            <Menu.Item key="6">Lesson 2</Menu.Item>
-            <Menu.Item key="7">Lesson 3</Menu.Item>
-            <Menu.Item key="8">Lesson 4</Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub3" icon={<FireOutlined />} title="Python">
-            <Menu.Item key="9">Coming Soon</Menu.Item>
-            <Menu.Item key="10">Coming Soon</Menu.Item>
-            <Menu.Item key="11">Coming Soon</Menu.Item>
-            <Menu.Item key="12">Coming Soon</Menu.Item>
-          </SubMenu> */}
+
         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>
