@@ -74,14 +74,11 @@ def spanish():
     "cards": [card.to_dict() for card in cards]
   }
 
-  # response = User.query.all()
-  # return { "users": [user.to_dict() for user in response]}
 
 @user_routes.route('/create/deck', methods=['POST'])
 def sampleDecks():
   user_id = request.get_json()
 
-  # print('asdfasdfasdfasdf', user_id['userId'])
   newDeck = UserDeck(
     user_id = user_id['userId'],
     deck_id = 1)
@@ -89,18 +86,18 @@ def sampleDecks():
   db.session.add(newDeck)
   db.session.commit()
 
-  # newDeck = UserDeck(
-  #   user_id = user_id['userId'],
-  #   deck_id = 2)
+  newDeck = UserDeck(
+    user_id = user_id['userId'],
+    deck_id = 2)
 
-  # db.session.add(newDeck)
-  # db.session.commit()
+  db.session.add(newDeck)
+  db.session.commit()
 
-  # newDeck = UserDeck(
-  #   user_id = user_id['userId'],
-  #   deck_id = 3)
+  newDeck = UserDeck(
+    user_id = user_id['userId'],
+    deck_id = 3)
 
-  # db.session.add(newDeck)
-  # db.session.commit()
+  db.session.add(newDeck)
+  db.session.commit()
 
   return ''

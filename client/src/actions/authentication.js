@@ -83,10 +83,8 @@ export const signIn = (email, password) => async dispatch => {
     dispatch(setUser(user));
     return { ok:true, id:user.id };
   } else {
-    const { user } = await response.json();
     const valErrors = await response.json();
     dispatch(setValErrors(valErrors));
-    return { ok:false, id:user.id };
   }
 };
 
