@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { signUp, signIn, setValErrors } from '../actions/authentication'
+import { signUp, signIn, setValErrors, createSample } from '../actions/authentication'
 import { Button } from 'antd';
 import '../styles/googlesignin.css'
 
@@ -33,7 +33,10 @@ function GoogleSignUp() {
 
         storeReady.then((result) => {
           if (result===true) {
-            const storeReady = dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT));
+            const storeReady = dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT)).then((res) => {
+              dispatch(createSample(res.id))
+            })
+
               if (storeReady) {
                 history.push({
                   pathname: '/dashboard',
@@ -42,7 +45,7 @@ function GoogleSignUp() {
             }
           } else if (result===false) {
             dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT)).then((res) => {
-              if (res) {
+              if (res.ok) {
                 history.push({
                   pathname: '/dashboard',
                   state: {'google': 'previousAccount'}
@@ -52,6 +55,7 @@ function GoogleSignUp() {
           }
         })
       })
+
     }
    catch {}
   }

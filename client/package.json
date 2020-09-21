@@ -9,6 +9,7 @@
     "antd": "^4.6.3",
     "rc-queue-anim": "^1.8.5",
     "react": "^16.13.1",
+    "react-audio-player": "^0.13.0",
     "react-dom": "^16.13.1",
     "react-particles-js": "^3.3.0",
     "react-redux": "^7.2.1",

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import QueueAnim from 'rc-queue-anim';
 import '../styles/card.css'
 import { Button } from 'antd';
-
+import ReactAudioPlayer from 'react-audio-player';
 
 
 function Card({data}) {
@@ -10,40 +10,54 @@ function Card({data}) {
   const [appear, setAppear] = useState(false)
   const [card, setCard] = useState('')
   const [photo, setPhoto] = useState('')
+  const [answer, setAnswer] = useState('')
+  const [audio, setAudio] = useState('')
+  const [cnt, setCnt] = useState(0)
+
 
   useEffect(() => {
     setCard(data)
-    setPhoto(card ? card[0].card_photo : null)
-
-  }, [data, card])
+    if (card !== undefined) {
+      if (card.length > 0) {
+        setPhoto(card ? card[cnt].card_photo : null)
+        setAnswer(card ? card[cnt].card: null)
+        setAudio(card ? card[cnt].card_audio: null)
+      }
+    }
+  }, [data, card, cnt])
 
   const onClick =() => {
     setAppear(!appear)
   }
 
-  // let cardPhoto = card ? card[0].card_Photo: null
-  // let cardPhoto = card ? 'github.png': null
-  console.log(photo)
+  const nextCard =() => {
+    setCnt(cnt+1)
+    setAppear(!appear)
+  }
+
   return (
     <>
-    <Button type="primary" onClick={onClick}>Click to Show Answer</Button>
+      <div className="card_container">
+      <img style={{height: 400, width: 500}} src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
       <QueueAnim delay={500} duration={1000}
-          className="card_container"
-          >
-        <img src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
 
-        {appear ? [<div key="test">
+          >
+        {appear ? [<div key="0">
           <div key="a">Answer</div>
-          <div key="bb">Click on a Deck to get Started</div>
-          <div key="cc">Click on a Deck to get Started</div>
-          <div key="ee">Click on a Deck to get Started</div>
-          <div key="ff">Click on a Deck to get Started</div>
-          <div key="gg">Click on a Deck to get Started</div>
-          <div key="hh">Click on a Deck to get Started</div>
-          <div key="ii">Click on a Deck to get Started</div>
+          <div key="b">{answer}</div>
+          <ReactAudioPlayer
+        src={process.env.PUBLIC_URL +'/collection.media/' + audio }
+        autoPlay
+        controls
+        />
+        <Button type="primary" onClick={nextCard}>Next Card</Button>
           </div>
         ] : null}
+
       </QueueAnim>
+      </div>
+
+      <Button type="primary" onClick={onClick}>Click to Show Answer</Button>
     </>
   );
 }

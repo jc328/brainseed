@@ -81,11 +81,12 @@ export const signIn = (email, password) => async dispatch => {
     window.localStorage.setItem(CURRENT_USER, JSON.stringify(user));
     dispatch(setToken(token));
     dispatch(setUser(user));
-    return true;
+    return { ok:true, id:user.id };
   } else {
+    const { user } = await response.json();
     const valErrors = await response.json();
     dispatch(setValErrors(valErrors));
-    return false;
+    return { ok:false, id:user.id };
   }
 };
 
@@ -102,3 +103,16 @@ export const logout = () => async (dispatch, getState) => {
     dispatch(removeAuth())
   }
 };
+
+export const createSample = (userId) => async dispatch => {
+
+    const response = await fetch(`${baseUrl}/create/deck`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({userId}),
+    });
+
+    if (response.ok) {
+      return true
+    }
+}

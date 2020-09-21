@@ -71,7 +71,6 @@ class UserDeck(db.Model):
 
   user = db.relationship("User", back_populates="userdecks")
   decks = db.relationship("Deck", back_populates="userdecks")
-# userdecks = db.relationship("UserDeck", back_populates="user")
 
   def to_dict(self):
     return {
@@ -81,6 +80,13 @@ class UserDeck(db.Model):
       "created_at": self.created_at,
       "updated_at": self.updated_at,
     }
+
+  # def new_dict(self):
+  #   return {
+  #     "id": self.id,
+  #     "user_id": self.user_id,
+  #     "deck_id": self.deck_id,
+  # }
 
 class Deck(db.Model):
   __tablename__='decks'

@@ -31,15 +31,31 @@ function DashBoard({location}) {
     async function test() {
     const response = await fetch(`${baseUrl}/deck/cards`, requestOptions)
     const newData = await response.json()
+    console.log('newdata', newData)
     setData(newData)
     }
     test()
   }, [userId])
 
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(userId),
+  }
+    async function test() {
+    const response = await fetch(`${baseUrl}/deck/cards`, requestOptions)
+    const newData = await response.json()
+    console.log('newdata', newData)
+    setData(newData)
+    }
+
   function welcome () {
     if (location.state) {
       if (location.state.google === "newAccount") {
-        message.loading('Creating new Google Account.  Logging In...', [2], () => {message.success(`Logged In.  Welcome ${firstName}`)})
+        message.loading('Creating new Google Account.  Logging In...', [2], () => {
+          message.success(`Logged In.  Welcome ${firstName}`)
+          test()
+        })
       } else if (location.state.google === "standard") {
         message.loading('Logging In...', [2], () => {message.success('Logged In')})
       } else if (location.state.google === "demologin") {
@@ -54,7 +70,6 @@ function DashBoard({location}) {
 
   return (
     <Layout>
-      {console.log(data)}
     <Layout className="dashboard_container">
       <Sider width={200} className="dashboard_sidebar">
       <div><Profile
@@ -81,7 +96,6 @@ function DashBoard({location}) {
             return ''
             }
           )}
-          {/* {data.cards.map((c, index) => <Menu.Item key={index}>{c.card}</Menu.Item>)} */}
           </SubMenu>) : ''}
 
         </Menu>
@@ -101,7 +115,7 @@ function DashBoard({location}) {
           }}
         >
           {/* <FlashCard /> */}
-          <Card data={data.cards}/>
+          <Card data={data.cards} />
         </Content>
       </Layout>
     </Layout>
