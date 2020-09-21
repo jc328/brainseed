@@ -32,7 +32,8 @@ function GoogleSignUp() {
       const storeReady = dispatch(signUp(auth.currentUser.le.rt.tV, auth.currentUser.le.rt.uT, auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT, auth.currentUser.le.rt.TJ))
 
         storeReady.then((result) => {
-          if (result===true) {
+          console.log(result)
+          if (result.ok===true) {
             const storeReady = dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT)).then((res) => {
               dispatch(createSample(res.id))
             })
