@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { Form, Input, Button, Modal } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { removeAuth, signUp } from '../actions/authentication';
+import { removeAuth, signUp, createSample } from '../actions/authentication';
 import {useHistory} from 'react-router-dom'
 import '../styles/signupmodal.css'
 import GoogleSignUp from './GoogleSignUp';
@@ -19,14 +19,19 @@ function SignUpModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(removeAuth())
-    const storeReady = await dispatch(signUp(firstName, lastName, email, password));
-    if (storeReady) {
-      history.push({
-        pathname: '/dashboard',
-        state: {'google': 'newstandard'}
-      })
-    }
+    dispatch(removeAuth())
+    await dispatch(signUp(firstName, lastName, email, password)).then((res) => {
+      dispatch(createSample(res.id))
+
+      if (res.ok) {
+        history.push({
+          pathname: '/dashboard',
+          state: {'google': 'newstandard'}
+        })
+      }
+    });
+
+
   }
 
   return (

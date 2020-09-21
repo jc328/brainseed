@@ -60,7 +60,7 @@ export const signUp = (firstName, lastName, email, password, picture = "") => as
       window.localStorage.setItem(CURRENT_USER, JSON.stringify(user));
       dispatch(setToken(token));
       dispatch(setUser(user))
-      return true
+      return { ok:true, id:user.id };
     }
 
   }

@@ -81,13 +81,6 @@ class UserDeck(db.Model):
       "updated_at": self.updated_at,
     }
 
-  # def new_dict(self):
-  #   return {
-  #     "id": self.id,
-  #     "user_id": self.user_id,
-  #     "deck_id": self.deck_id,
-  # }
-
 class Deck(db.Model):
   __tablename__='decks'
 
