@@ -7,7 +7,8 @@ import { ReadOutlined, } from '@ant-design/icons';
 // LaptopOutlined, FireOutlined
 import Profile from './Profile';
 import { useSelector } from 'react-redux'
-import FlashCard from './FlashCard';
+// import FlashCard from './FlashCard';
+import Card from './Card';
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -75,15 +76,13 @@ function DashBoard({location}) {
               return <Menu.Item key={index}>Lesson {(index/50) + 1}</Menu.Item>
             }
             if (idx+1 !== c.deck_id && index < 1) {
-              return <Menu.Item key={index}>Coming Soon...</Menu.Item>
+              return <Menu.Item key={index}>No Cards Listed</Menu.Item>
             }
             return ''
             }
           )}
           {/* {data.cards.map((c, index) => <Menu.Item key={index}>{c.card}</Menu.Item>)} */}
           </SubMenu>) : ''}
-
-
 
         </Menu>
       </Sider>
@@ -101,7 +100,8 @@ function DashBoard({location}) {
             minHeight: 380,
           }}
         >
-          <FlashCard />
+          {/* <FlashCard /> */}
+          <Card data={data.cards}/>
         </Content>
       </Layout>
     </Layout>
