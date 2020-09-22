@@ -3,11 +3,10 @@ import { baseUrl } from '../config';
 import 'antd/dist/antd.css';
 import '../styles/dashboard.css'
 import { Layout, Menu, Breadcrumb, message } from 'antd';
-import { ReadOutlined, } from '@ant-design/icons';
+import { ReadOutlined  } from '@ant-design/icons';
 // LaptopOutlined, FireOutlined
 import Profile from './Profile';
 import { useSelector } from 'react-redux'
-// import FlashCard from './FlashCard';
 import Card from './Card';
 
 const { SubMenu } = Menu;
@@ -100,10 +99,10 @@ function DashBoard({location}) {
 
         </Menu>
       </Sider>
-      <Layout style={{ padding: '0 24px 24px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
+      <Layout style={{ padding: '0 24px 24px', backgroundColor: '#434343'}}>
+        <Breadcrumb className="dashboard_breadcrumb" style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item >Home</Breadcrumb.Item>
+          <Breadcrumb.Item>Deck</Breadcrumb.Item>
           <Breadcrumb.Item>Card</Breadcrumb.Item>
         </Breadcrumb>
         <Content
@@ -111,10 +110,9 @@ function DashBoard({location}) {
           style={{
             padding: 24,
             margin: 0,
-            minHeight: 380,
+            minHeight: 500,
           }}
         >
-          {/* <FlashCard /> */}
           <Card data={data.cards} />
         </Content>
       </Layout>

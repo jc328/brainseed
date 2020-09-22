@@ -57,7 +57,7 @@ function Card({data}) {
       </QueueAnim>
       </div>
 
-      <Button type="primary" onClick={onClick}>Click to Show Answer</Button>
+      <Button type="primary" onClick={onClick}>Reveal Answer</Button>
     </>
   );
 }
