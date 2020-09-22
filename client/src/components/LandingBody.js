@@ -19,7 +19,7 @@ function LandingBody() {
                       "enable": false
                   },
                   "number": {
-                      "value": 150,
+                      "value": 200,
                       "density": {
                           "enable": false
                       }
@@ -54,7 +54,7 @@ function LandingBody() {
                       "arrangement": "equidistant"
                   },
                   "draw": {
-                      "enable": true,
+                    //   "enable": true,
                       "stroke": {
                           "color": "rgba(255, 255, 255, .2)"
                       }

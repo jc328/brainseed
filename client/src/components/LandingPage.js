@@ -23,7 +23,6 @@ function LandingPage() {
 
   return (
   <>
-
       <LandingHeader />
       <LandingBody />
       <LandingFooter />
