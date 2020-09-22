@@ -3,6 +3,7 @@ import QueueAnim from 'rc-queue-anim';
 import '../styles/card.css'
 import { Button } from 'antd';
 import ReactAudioPlayer from 'react-audio-player';
+import Texty from 'rc-texty';
 
 
 function Card({data}) {
@@ -12,6 +13,7 @@ function Card({data}) {
   const [photo, setPhoto] = useState('')
   const [answer, setAnswer] = useState('')
   const [audio, setAudio] = useState('')
+  const [url, setUrl] = useState('')
   const [cnt, setCnt] = useState(0)
 
 
@@ -22,6 +24,7 @@ function Card({data}) {
         setPhoto(card ? card[cnt].card_photo : null)
         setAnswer(card ? card[cnt].card: null)
         setAudio(card ? card[cnt].card_audio: null)
+        setUrl(card ? card[cnt].card_url: null)
       }
     }
   }, [data, card, cnt])
@@ -42,22 +45,34 @@ function Card({data}) {
       <QueueAnim delay={500} duration={1000}
 
           >
-        {appear ? [<div key="0">
-          <div key="a">Answer</div>
-          <div key="b">{answer}</div>
+        {appear ? [
+          <div key="a" className="card_answer_container">
+          <div key="b" className="card_answer">
+            <Texty
+              appear={appear}
+              duration={2000}
+              type={'flash'}
+              >{answer}</Texty>
+          </div>
+          <div key="c" className="card_url">
+          <a style={{color:'white'}} target="_blank" rel="noopener noreferrer" href={url}>Click Here To Learn More Here</a>
+          </div>
+
           <ReactAudioPlayer
-        src={process.env.PUBLIC_URL +'/collection.media/' + audio }
-        autoPlay
-        controls
-        />
-        <Button type="primary" onClick={nextCard}>Next Card</Button>
+            src={process.env.PUBLIC_URL +'/collection.media/' + audio }
+            autoPlay
+            controls
+            className="card_audio_player"
+            style={{color: 'white'}}
+          />
+          <Button type="ghost" style={{width: '100%', color: 'white'}} onClick={nextCard}>Next Card</Button>
           </div>
         ] : null}
 
       </QueueAnim>
       </div>
 
-      <Button type="primary" onClick={onClick}>Reveal Answer</Button>
+      <Button type="ghost" style={{width: '100%', marginTop: 20, color: 'white'}} onClick={onClick}>Reveal Answer</Button>
     </>
   );
 }
