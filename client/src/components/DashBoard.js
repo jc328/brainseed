@@ -60,7 +60,9 @@ function DashBoard({location}) {
       } else if (location.state.google === "demologin") {
         message.loading('Demo Account Logging In...', [2], () => {message.success(`Logged In.  Welcome ${firstName}`)})
       } else if (location.state.google === "newstandard") {
-        message.loading('New Account Created.  Logging In...', [2], () => {message.success(`Logged In.  Welcome ${firstName}`)})
+        message.loading('New Account Created.  Logging In...', [2], () => {message.success(`Logged In.  Welcome ${firstName}`)
+        test()
+      })
       }
     }
   }
