@@ -88,8 +88,8 @@ function DashBoard({location}) {
         >
           {data.deckData ? data.deckData.map((x, idx) => <SubMenu key={idx} icon={<ReadOutlined />} title={x.deck} >
           {data.cards.map((c, index) =>  {
-            if (index % 50 === 0 && (idx+1) === c.deck_id) {
-              return <Menu.Item key={index}>Lesson {(index/50) + 1}</Menu.Item>
+            if (index % 125 === 0 && (idx+1) === c.deck_id) {
+              return <Menu.Item key={index}>Lesson {(index/125) + 1}</Menu.Item>
             }
             if (idx+1 !== c.deck_id && index < 1) {
               return <Menu.Item key={index}>No Cards Listed</Menu.Item>
@@ -112,7 +112,7 @@ function DashBoard({location}) {
           style={{
             padding: 24,
             margin: 0,
-            minHeight: 500,
+            minHeight: '90vh',
           }}
         >
           <Card data={data.cards} />

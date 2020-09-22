@@ -41,7 +41,7 @@ function Card({data}) {
   return (
     <>
       <div className="card_container">
-      <img style={{height: 400, width: 500}} src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
+      <img style={{height: 400, width: 525}} src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
       <QueueAnim delay={500} duration={1000}
 
           >
@@ -51,7 +51,7 @@ function Card({data}) {
             <Texty
               appear={appear}
               duration={2000}
-              type={'flash'}
+              // type={'flash'}
               >{answer}</Texty>
           </div>
           <div key="c" className="card_url">

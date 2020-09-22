@@ -20,7 +20,7 @@ function LogOutButton() {
 
     return (
         <>
-          <Button type="primary" onClick={clickHandler} shape="circle" icon={<LogoutOutlined />} size='medium' />
+          <Button type="primary" onClick={clickHandler} shape="circle" icon={<LogoutOutlined />} size='medium' style={{marginTop: 8}}/>
         </>
     );
 }
