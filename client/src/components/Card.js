@@ -6,7 +6,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import Texty from 'rc-texty';
 
 
-function Card({data}) {
+function Card({data, count}) {
 
   const [appear, setAppear] = useState(false)
   const [card, setCard] = useState('')
@@ -15,26 +15,34 @@ function Card({data}) {
   const [audio, setAudio] = useState('')
   const [url, setUrl] = useState('')
   const [cnt, setCnt] = useState(0)
+  const [current, setCurrent] = useState(0)
 
 
+  // console.log(count ? count: 0)
   useEffect(() => {
     setCard(data)
     if (card !== undefined) {
       if (card.length > 0) {
-        setPhoto(card ? card[cnt].card_photo : null)
-        setAnswer(card ? card[cnt].card: null)
-        setAudio(card ? card[cnt].card_audio: null)
-        setUrl(card ? card[cnt].card_url: null)
+        console.log(current)
+        console.log(cnt)
+        console.log(current+cnt)
+        let num = parseInt(current)
+        let num2 = parseInt(cnt)
+        setPhoto(card ? card[num+num2].card_photo : null)
+        setAnswer(card ? card[num+num2].card: null)
+        setAudio(card ? card[num+num2].card_audio: null)
+        setUrl(card ? card[num+num2].card_url: null)
+        setCnt(count)
       }
     }
-  }, [data, card, cnt])
+  }, [data, card, current, count, cnt])
 
   const onClick =() => {
     setAppear(!appear)
   }
 
   const nextCard =() => {
-    setCnt(cnt+1)
+    setCurrent(parseInt(current)+1)
     setAppear(!appear)
   }
 

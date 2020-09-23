@@ -18,8 +18,10 @@ function DashBoard({location}) {
   const firstName = useSelector((state) => state.authentication.user.first_name)
   const lastName = useSelector((state) => state.authentication.user.last_name)
   const createdDate = useSelector((state) => state.authentication.user.created_at)
-  const [data, setData] = useState([]);
   const userId = useSelector((state) => state.authentication.user.id)
+  const [data, setData] = useState([]);
+  const [cnt, setCnt] = useState(0);
+
 
   useEffect(() => {
     const requestOptions = {
@@ -30,7 +32,6 @@ function DashBoard({location}) {
     async function test() {
     const response = await fetch(`${baseUrl}/deck/cards`, requestOptions)
     const newData = await response.json()
-    console.log('newdata', newData)
     setData(newData)
     }
     test()
@@ -41,12 +42,11 @@ function DashBoard({location}) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userId),
   }
-    async function test() {
+  async function test() {
     const response = await fetch(`${baseUrl}/deck/cards`, requestOptions)
     const newData = await response.json()
-    console.log('newdata', newData)
     setData(newData)
-    }
+  }
 
   function welcome () {
     if (location.state) {
@@ -69,6 +69,11 @@ function DashBoard({location}) {
 
   useEffect(welcome, [])
 
+  function updateIndex(e) {
+    // setCnt(idx)
+    setCnt(e.key)
+  }
+
   return (
     <Layout>
     <Layout className="dashboard_container">
@@ -89,7 +94,7 @@ function DashBoard({location}) {
           {data.deckData ? data.deckData.map((x, idx) => <SubMenu key={idx} icon={<ReadOutlined />} title={x.deck} >
           {data.cards.map((c, index) =>  {
             if (index % 125 === 0 && (idx+1) === c.deck_id) {
-              return <Menu.Item key={index}>Lesson {(index/125) + 1}</Menu.Item>
+              return <Menu.Item key={index} onClick={(e) => {updateIndex(e)}}>Lesson {(index/125) + 1}</Menu.Item>
             }
             if (idx+1 !== c.deck_id && index < 1) {
               return <Menu.Item key={index}>No Cards Listed</Menu.Item>
@@ -115,7 +120,7 @@ function DashBoard({location}) {
             minHeight: '90vh',
           }}
         >
-          <Card data={data.cards} />
+          <Card data={data.cards} count={cnt} />
         </Content>
       </Layout>
     </Layout>
