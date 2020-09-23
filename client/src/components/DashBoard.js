@@ -3,8 +3,8 @@ import { baseUrl } from '../config';
 import 'antd/dist/antd.css';
 import '../styles/dashboard.css'
 import { Layout, Menu, Breadcrumb, message } from 'antd';
-import { ReadOutlined  } from '@ant-design/icons';
-// LaptopOutlined, FireOutlined
+import { ReadOutlined, LaptopOutlined, FireOutlined  } from '@ant-design/icons';
+
 import Profile from './Profile';
 import { useSelector } from 'react-redux'
 import Card from './Card';
@@ -21,6 +21,7 @@ function DashBoard({location}) {
   const userId = useSelector((state) => state.authentication.user.id)
   const [data, setData] = useState([]);
   const [cnt, setCnt] = useState(0);
+
 
 
   useEffect(() => {
@@ -70,7 +71,6 @@ function DashBoard({location}) {
   useEffect(welcome, [])
 
   function updateIndex(e) {
-    // setCnt(idx)
     setCnt(e.key)
   }
 
@@ -91,13 +91,13 @@ function DashBoard({location}) {
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
         >
-          {data.deckData ? data.deckData.map((x, idx) => <SubMenu key={idx} icon={<ReadOutlined />} title={x.deck} >
+          {data.deckData ? data.deckData.map((x, idx) => <SubMenu key={idx+1} icon={<ReadOutlined />} title={x.deck} >
           {data.cards.map((c, index) =>  {
             if (index % 125 === 0 && (idx+1) === c.deck_id) {
-              return <Menu.Item key={index} onClick={(e) => {updateIndex(e)}}>Lesson {(index/125) + 1}</Menu.Item>
+            return <Menu.Item key={index} icon={<FireOutlined />} onClick={(e) => {updateIndex(e)}}>Lesson {(index/125) + 1}</Menu.Item>
             }
             if (idx+1 !== c.deck_id && index < 1) {
-              return <Menu.Item key={index}>No Cards Listed</Menu.Item>
+              return <Menu.Item key={idx} icon={<LaptopOutlined />}>No Cards Listed</Menu.Item>
             }
             return ''
             }

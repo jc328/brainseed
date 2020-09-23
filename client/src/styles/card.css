@@ -27,3 +27,11 @@
 .card_url {
   margin-bottom: 50px;
 }
+
+.progress_bar {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 325;
+  color: white !important;
+  width: 100%;
+  margin-top:18px;
+}
