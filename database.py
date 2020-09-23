@@ -434,7 +434,6 @@ Card(card='azul',card_photo='paste-3461743640788.jpg',card_audio='3b24fa7e14555a
 Card(card='morado',card_photo='paste-4307852198313.jpg',card_audio='17163859b9c16bc4dec286e3adc20047-300.mp3',card_url='http://www.wordreference.com/es/en/translation.asp?spen=morado',deck_id=1),
 Card(card='plata',card_photo='plata.jpg',card_audio='e0b95c145bd9ef5d82e5a97f87f41a54-107.mp3',card_url='http://www.wordreference.com/es/en/translation.asp?spen=plata',deck_id=1),
 Card(card='hora',card_photo='hora.jpg',card_audio='12c3de998cc272112872ea8a1c2f67b9-107.mp3',card_url='http://www.wordreference.com/es/en/translation.asp?spen=hora',deck_id=1),
-Card(card='miércoles',card_photo='miércoles.jpg',card_audio='241877459076b23cab6d49c3c170bbc0-106.mp3',card_url='http://www.wordreference.com/es/en/translation.asp?spen=mi%C3%A9rcoles',deck_id=1),
 Card(card='domingo',card_photo='domingo.jpg',card_audio='ef48f94260867a2a9fdad53362cd24a0-100.mp3',card_url='http://www.wordreference.com/es/en/translation.asp?spen=domingo',deck_id=1),
 Card(card='enero',card_photo='enero.jpg',card_audio='e59abcbf368e95ff31f1f28dc4fa5fe2-106.mp3',card_url='http://www.wordreference.com/es/en/translation.asp?spen=enero',deck_id=1),
 Card(card='abril',card_photo='abril.jpg',card_audio='dccefc9affe37ba60b49d0a4789ce042-106.mp3',card_url='http://www.wordreference.com/es/en/translation.asp?spen=abril',deck_id=1),
