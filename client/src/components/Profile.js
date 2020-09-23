@@ -4,7 +4,7 @@ import LogOutButton from './LogOutButton';
 import { useSelector } from 'react-redux'
 import { message } from 'antd';
 
-function Profile({firstName, lastName, picture, createdDate}) {
+function Profile({firstName, lastName, picture, createdDate, percent}) {
   const pictureURL = picture ? picture : process.env.PUBLIC_URL + 'avatar_generic.png'
   const valErrors = useSelector(state=> state.authentication.valErrors)
 
@@ -23,10 +23,9 @@ function Profile({firstName, lastName, picture, createdDate}) {
                         <div><img className="profile_image" src={pictureURL} alt="" /></div>
                         <div className="profile_username">{firstName} {lastName}</div>
                         <div className="profile_data">User Since: {createdDate}</div>
-                        <div className="profile_data">Cards Reviewed:</div>
+                        <div className="profile_data">Cards Reviewed: {percent}</div>
                         <LogOutButton />
                     </div>
-                    {/* <div className="profile_settings">Settings</div> */}
 
             </div>
         </>

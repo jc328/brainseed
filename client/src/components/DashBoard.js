@@ -19,8 +19,10 @@ function DashBoard({location}) {
   const lastName = useSelector((state) => state.authentication.user.last_name)
   const createdDate = useSelector((state) => state.authentication.user.created_at)
   const userId = useSelector((state) => state.authentication.user.id)
+
   const [data, setData] = useState([]);
   const [cnt, setCnt] = useState(0);
+  const [percent, setPercent] = useState(0);
 
 
 
@@ -84,6 +86,7 @@ function DashBoard({location}) {
             firstName={firstName}
             lastName={lastName}
             createdDate={createdDate}
+            percent={percent}
             /></div>
         <Menu
           mode="inline"
@@ -120,7 +123,7 @@ function DashBoard({location}) {
             minHeight: '90vh',
           }}
         >
-          <Card data={data.cards} count={cnt} />
+          <Card data={data.cards} count={cnt} percent={percent} setPercent={setPercent} />
         </Content>
       </Layout>
     </Layout>

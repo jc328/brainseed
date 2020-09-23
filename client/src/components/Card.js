@@ -7,7 +7,7 @@ import Texty from 'rc-texty';
 import { Progress, Tooltip } from 'antd';
 
 
-function Card({data, count}) {
+function Card({data, count, percent, setPercent}) {
 
   const [appear, setAppear] = useState(false)
   const [card, setCard] = useState('')
@@ -17,7 +17,7 @@ function Card({data, count}) {
   const [url, setUrl] = useState('')
   const [cnt, setCnt] = useState(0)
   const [current, setCurrent] = useState(0)
-  const [percent, setPercent] = useState(0);
+  // const [percent, setPercent] = useState(0);
 
 
   // console.log(count ? count: 0)
