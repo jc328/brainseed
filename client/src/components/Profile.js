@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { message } from 'antd';
 
 function Profile({firstName, lastName, picture, createdDate, percent}) {
-  const pictureURL = picture ? picture : process.env.PUBLIC_URL + 'avatar_generic.png'
+  const pictureURL = picture ? picture : 'https://user-images.githubusercontent.com/19940754/94235461-7b0f5600-fec0-11ea-9292-c4e1ac2be64f.png'
   const valErrors = useSelector(state=> state.authentication.valErrors)
 
   useEffect(() => {

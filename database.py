@@ -2,8 +2,8 @@ from dotenv import load_dotenv
 from datetime import datetime, timedelta
 load_dotenv()
 
-from starter_app import app, db
-from starter_app.models import User, Deck, Card, UserDeck
+from app import app, db
+from app.models import User, Deck, Card, UserDeck
 
 with app.app_context():
   db.drop_all()

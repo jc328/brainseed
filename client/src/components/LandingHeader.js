@@ -10,7 +10,7 @@ function LandingHeader() {
     return (
         <>
           <div className="landingheader_container">
-            <Link to="/"><img className="landing_logo" src={process.env.PUBLIC_URL + '/logoword.png'} alt="" /></Link>
+            <Link to="/"><img className="landing_logo" src={'https://user-images.githubusercontent.com/19940754/94236398-ffaea400-fec1-11ea-8bb7-cbe1b8af02e8.png'} alt="" /></Link>
             <div> <Button type="text" disabled className="disable" style={{color:'white'}}>Find Flashcards</Button></div>
             <div> <Button type="text" disabled className="disable" style={{color:'white'}}>About</Button></div>
             <div><LoginModal /></div>

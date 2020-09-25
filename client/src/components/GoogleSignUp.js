@@ -63,7 +63,7 @@ function GoogleSignUp() {
 
   return (
         <>
-          <Button type="link" style={{marginBottom: 20}}><img className="signin_button" onClick={handleSubmit} src={process.env.PUBLIC_URL + '/googlebutton.png'} alt="" /></Button>
+          <Button type="link" style={{marginBottom: 20}}><img className="signin_button" onClick={handleSubmit} src={'https://user-images.githubusercontent.com/19940754/94235360-47343080-fec0-11ea-88f4-21dc2d6a0615.png'} alt="" /></Button>
         </>
     );
 }

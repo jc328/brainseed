@@ -11,7 +11,7 @@ function LandingFooter() {
             <div className="landingfooter_name">JOHN CHEN</div>
                 <div>
                     <Button type="link" href="https://www.linkedin.com/in/john-chen-92714817/"><img
-                    src={process.env.PUBLIC_URL + '/linkedin.png'}
+                    src={'https://user-images.githubusercontent.com/19940754/94235188-05a38580-fec0-11ea-8331-fc8033dd48b7.png'}
                     alt=""
                     style={{height:20, marginRight: 20, marginLeft: 30}}
                      /></Button>
@@ -23,7 +23,7 @@ function LandingFooter() {
                  style={{color: 'white'}}
                  >
                      <img
-                    src={process.env.PUBLIC_URL + '/github.png'}
+                    src={'https://user-images.githubusercontent.com/19940754/94235284-279d0800-fec0-11ea-960f-228d02d66641.png'}
                     alt=""
                     style={{height:25}}
                      /></Button></div>

@@ -1,12 +1,13 @@
 from flask import Blueprint, jsonify, request, redirect, url_for
-from starter_app.models import User
+from app.models import User
 from werkzeug.security import generate_password_hash
 from ..models import User, Deck, Card, UserDeck, db
 from flask_jwt_extended import jwt_optional, create_access_token, get_jwt_identity, jwt_required, get_raw_jwt
 
 user_routes = Blueprint('users', __name__)
 
-@user_routes.route('/')
+
+@user_routes.route('/allusers')
 def index():
   response = User.query.all()
   return { "users": [user.to_dict() for user in response]}

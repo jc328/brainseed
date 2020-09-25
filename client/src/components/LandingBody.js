@@ -49,12 +49,11 @@ function LandingBody() {
                   "move": {
                       "radius": 10
                   },
-                  "url": "/deer.svg",
+                  "url": 'https://raw.githubusercontent.com/vincurekf/particles.js/a47302f3031258d82be5bd742b11a0d9d6125bf0/demo/svg/deer.svg',
                   "inline": {
                       "arrangement": "equidistant"
                   },
                   "draw": {
-                    //   "enable": true,
                       "stroke": {
                           "color": "rgba(255, 255, 255, .2)"
                       }

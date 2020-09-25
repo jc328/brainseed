@@ -6,10 +6,10 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, jwt_required, get_raw_jwt
 
 
-from starter_app.models import db, User
-from starter_app.api.user_routes import user_routes
+from .models import db, User
+from app.api.user_routes import user_routes
 
-from starter_app.config import Config
+from app.config import Config
 
 app = Flask(__name__, static_url_path='')
 
