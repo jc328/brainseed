@@ -25,9 +25,6 @@ function Card({data, count, percent, setPercent}) {
     setCard(data)
     if (card !== undefined) {
       if (card.length > 0) {
-        console.log(current)
-        console.log(cnt)
-        console.log(current+cnt)
         let num = parseInt(current)
         let num2 = parseInt(cnt)
         setPhoto(card ? card[num+num2].card_photo : null)
@@ -52,7 +49,7 @@ function Card({data, count, percent, setPercent}) {
   return (
     <>
       <div className="card_container">
-      <img style={{height: 400, width: 525}} src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
+      <img style={{height: 500, width: 650}} src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
       <QueueAnim delay={500} duration={500}
 
           >
@@ -83,7 +80,7 @@ function Card({data, count, percent, setPercent}) {
       </QueueAnim>
       </div>
 
-      <Button type="ghost" style={{width: '100%', marginTop: 20, color: 'white'}} onClick={onClick}>Reveal Answer</Button>
+      <Button type="ghost" style={{width: '100%', marginTop: 30, color: 'white'}} onClick={onClick}>Reveal Answer</Button>
       <div className="progress_bar">
       <Tooltip title={`${percent} Cards Completed of 50`}>
       <Progress percent={percent}

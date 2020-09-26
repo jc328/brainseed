@@ -26,6 +26,8 @@
 
 .card_url {
   margin-bottom: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 325;
 }
 
 .progress_bar {
