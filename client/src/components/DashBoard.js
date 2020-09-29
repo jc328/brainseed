@@ -123,7 +123,7 @@ function DashBoard({location}) {
             minHeight: '90vh',
           }}
         >
-          <Card data={data.cards} count={cnt} percent={percent} setPercent={setPercent} />
+          <Card data={data.cards} count={cnt} percent={percent} setPercent={setPercent} updateIndex={updateIndex} />
         </Content>
       </Layout>
     </Layout>

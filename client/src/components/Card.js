@@ -31,6 +31,7 @@ function Card({data, count, percent, setPercent}) {
         setAnswer(card ? card[num+num2].card: null)
         setAudio(card ? card[num+num2].card_audio: null)
         setUrl(card ? card[num+num2].card_url: null)
+        setAppear(false)
         setCnt(count)
       }
     }
