@@ -10,9 +10,11 @@ function LandingFooter() {
           <div className="landingfooter_container">
             <div className="landingfooter_name">JOHN CHEN</div>
                 <div>
-                    <Button type="link" href="https://www.linkedin.com/in/john-chen-92714817/"><img
+                    <Button type="link"
+                    href="https://www.linkedin.com/in/johnchen328/"
+                    target="_blank"><img
                     src={'https://user-images.githubusercontent.com/19940754/94235188-05a38580-fec0-11ea-8331-fc8033dd48b7.png'}
-                    alt=""
+                    alt="LinkedIn"
                     style={{height:20, marginRight: 20, marginLeft: 30}}
                      /></Button>
                 </div>
@@ -21,10 +23,11 @@ function LandingFooter() {
                  icon={<GithubOutlined />}
                  href="https://github.com/jc328"
                  style={{color: 'white'}}
+                 target="_blank"
                  >
                      <img
                     src={'https://user-images.githubusercontent.com/19940754/94235284-279d0800-fec0-11ea-960f-228d02d66641.png'}
-                    alt=""
+                    alt="Github"
                     style={{height:25}}
                      /></Button></div>
             </div>

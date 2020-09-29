@@ -8,6 +8,7 @@ import { ReadOutlined, LaptopOutlined, FireOutlined  } from '@ant-design/icons';
 import Profile from './Profile';
 import { useSelector } from 'react-redux'
 import Card from './Card';
+import AddDeck from './AddDeck';
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -75,6 +76,9 @@ function DashBoard({location}) {
   function updateIndex(e) {
     setCnt(e.key)
   }
+  function comingSoon(e) {
+    setCnt(-1)
+  }
 
   return (
     <Layout>
@@ -100,7 +104,7 @@ function DashBoard({location}) {
             return <Menu.Item key={index} icon={<FireOutlined />} onClick={(e) => {updateIndex(e)}}>Lesson {(index/125) + 1}</Menu.Item>
             }
             if (idx+1 !== c.deck_id && index < 1) {
-              return <Menu.Item key={idx} icon={<LaptopOutlined />}>No Cards Listed</Menu.Item>
+              return <Menu.Item key={idx} icon={<LaptopOutlined />} onClick={(e) => {comingSoon(e)}}>No Cards Listed</Menu.Item>
             }
             return ''
             }
@@ -123,7 +127,7 @@ function DashBoard({location}) {
             minHeight: '90vh',
           }}
         >
-          <Card data={data.cards} count={cnt} percent={percent} setPercent={setPercent} updateIndex={updateIndex} />
+          {cnt !== -1 ? <Card data={data.cards} count={cnt} percent={percent} setPercent={setPercent}/> : <AddDeck />}
         </Content>
       </Layout>
     </Layout>
