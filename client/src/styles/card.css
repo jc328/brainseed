@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 60px;
 }
 
 .card_audio_player {
@@ -36,4 +36,8 @@
   color: white !important;
   width: 100%;
   margin-top:18px;
+}
+
+.card_photo {
+  border-radius: 50px;
 }

@@ -49,7 +49,7 @@ function Card({data, count, percent, setPercent}) {
   return (
     <>
       <div className="card_container">
-      <img style={{height: 500, width: 650}} src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
+      <img className="card_photo" style={{height: 500, width: 650}} src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
       <QueueAnim delay={500} duration={500}
 
           >
