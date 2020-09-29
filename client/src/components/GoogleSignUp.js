@@ -29,10 +29,10 @@ function GoogleSignUp() {
     try {
       dispatch(setValErrors(''));
       auth.signIn().then(() => {
-      const storeReady = dispatch(signUp(auth.currentUser.le.rt.tV, auth.currentUser.le.rt.uT, auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT, auth.currentUser.le.rt.TJ))
+      const storeReady = dispatch(signUp(auth.currentUser.le.rt.tV, auth.currentUser.le.rt.uT, auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT, auth.currentUser.le.rt.TJ, true))
 
         storeReady.then((result) => {
-          if (result.ok===true) {
+          if (result===true) {
             const storeReady = dispatch(signIn(auth.currentUser.le.rt.$t, auth.currentUser.le.rt.NT)).then((res) => {
               dispatch(createSample(res.id))
             })

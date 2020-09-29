@@ -41,21 +41,26 @@ export const loadUser = () => async dispatch => {
   }
 };
 
-export const signUp = (firstName, lastName, email, password, picture = "") => async dispatch => {
+export const signUp = (firstName, lastName, email, password, picture = "", google=false) => async dispatch => {
 
   try {
     const response = await fetch(`${baseUrl}/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName, email, password, picture }),
+      body: JSON.stringify({ firstName, lastName, email, password, picture, google }),
     });
+
     if (!response.ok) {
       const valErrors = await response.json();
       await dispatch(setValErrors(valErrors))
       return false;
     }
     else {
-      const { token, user } = await response.json();
+      const { token, user, google } = await response.json();
+
+      if (google) {
+        return false
+      }
       window.localStorage.setItem(TOKEN_KEY, token);
       window.localStorage.setItem(CURRENT_USER, JSON.stringify(user));
       dispatch(setToken(token));
