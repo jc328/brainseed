@@ -25,16 +25,17 @@ def sign_up():
       hashed_password=hash,
       picUrl=data['picture'])
 
-    # user.set_password(data[hash])
-
     db.session.add(user)
     db.session.commit()
     email = user.email
     access_token = create_access_token(identity=email)
-    return {"token": access_token, "user": user.to_dict()}, 200
-  except AssertionError as exception_message:
-    return jsonify(msg='Error: {}. '.format(exception_message)), 400
 
+    return {"token": access_token, "user": user.to_dict()}, 200
+
+  except AssertionError as exception_message:
+    if (data['google'] == True):
+      return jsonify({"google":"True"}), 200
+    return jsonify(msg='Error: {}. '.format(exception_message)), 400
 
 @user_routes.route('/signin', methods=['POST'])
 def sign_in():
