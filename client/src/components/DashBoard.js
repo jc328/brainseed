@@ -34,7 +34,7 @@ function DashBoard({location}) {
       body: JSON.stringify(userId),
     }
     async function test() {
-    const response = await fetch(`${baseUrl}/deck/cards`, requestOptions)
+    const response = await fetch(`${baseUrl}deck/cards`, requestOptions)
     const newData = await response.json()
     setData(newData)
     }
@@ -47,7 +47,7 @@ function DashBoard({location}) {
     body: JSON.stringify(userId),
   }
   async function test() {
-    const response = await fetch(`${baseUrl}/deck/cards`, requestOptions)
+    const response = await fetch(`${baseUrl}deck/cards`, requestOptions)
     const newData = await response.json()
     setData(newData)
   }

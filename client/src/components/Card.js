@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import QueueAnim from 'rc-queue-anim';
 import '../styles/card.css'
-import { Button } from 'antd';
 import ReactAudioPlayer from 'react-audio-player';
 import Texty from 'rc-texty';
-import { Progress, Tooltip } from 'antd';
+import { Progress, Tooltip, Button, Spin, Space } from 'antd';
 
 
 function Card({data, count, percent, setPercent}) {
 
   const [appear, setAppear] = useState(false)
   const [card, setCard] = useState('')
-  const [photo, setPhoto] = useState('')
+  const [photo, setPhoto] = useState(null)
   const [answer, setAnswer] = useState('')
   const [audio, setAudio] = useState('')
   const [url, setUrl] = useState('')
   const [cnt, setCnt] = useState(0)
   const [current, setCurrent] = useState(0)
-  // const [percent, setPercent] = useState(0);
 
-
-  // console.log(count ? count: 0)
   useEffect(() => {
     setCard(data)
     if (card !== undefined) {
@@ -47,10 +43,12 @@ function Card({data, count, percent, setPercent}) {
     setPercent(percent + 1)
   }
 
+
   return (
     <>
       <div className="card_container">
-      <img className="card_photo" style={{height: 500, width: 650}} src={process.env.PUBLIC_URL +'/collection.media/' + photo } alt=""/>
+
+      <img className="card_photo" style={{height: 500, width: 650}} src={ photo ? process.env.PUBLIC_URL +'/collection.media/' + photo : <Space><Spin size="large" /></Space> } alt=""/>
       <QueueAnim delay={500} duration={500}
 
           >
@@ -68,13 +66,13 @@ function Card({data, count, percent, setPercent}) {
           </div>
 
           <ReactAudioPlayer
-            src={process.env.PUBLIC_URL +'/collection.media/' + audio }
+            src={audio ? process.env.PUBLIC_URL +'/collection.media/' + audio : <Space><Spin size="large" /></Space> }
             autoPlay
             controls
             className="card_audio_player"
             style={{color: 'white'}}
           />
-          <Button strokeColor="red" type="ghost" style={{width: '100%', color: 'white'}} onClick={nextCard}>Next Card</Button>
+          <Button type="ghost" style={{width: '100%', color: 'white'}} onClick={nextCard}>Next Card</Button>
           </div>
         ] : null}
 
