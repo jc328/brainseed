@@ -11,7 +11,6 @@ function App() {
   return (
     <BrowserRouter>
         <Switch>
-            <Route path="/users" />
             <Route path="/" exact component={LandingPage} />
             <PrivateRoute path="/dashboard" needSignIn={needSignIn} exact component={Dashboard} />
 
