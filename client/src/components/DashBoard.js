@@ -115,9 +115,9 @@ function DashBoard({location}) {
       </Sider>
       <Layout style={{ padding: '0 24px 24px', backgroundColor: '#434343'}}>
         <Breadcrumb className="dashboard_breadcrumb" style={{ margin: '16px 0' }}>
-          {/* <Breadcrumb.Item >Home</Breadcrumb.Item>
+          <Breadcrumb.Item >Home</Breadcrumb.Item>
           <Breadcrumb.Item>Deck</Breadcrumb.Item>
-          <Breadcrumb.Item>Card</Breadcrumb.Item> */}
+          <Breadcrumb.Item>Card</Breadcrumb.Item>
         </Breadcrumb>
         <Content
           className="dashboard_sidebar"
